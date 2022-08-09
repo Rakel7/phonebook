@@ -1,7 +1,6 @@
-import { findByLabelText } from '@testing-library/react';
 import React from 'react';
 
-const Card = ({ item }) => {
+const UserCard = ({ userData }) => {
 
     const cardStyle = {
         backgroundColor: "#B2DDF7",
@@ -16,11 +15,11 @@ const Card = ({ item }) => {
 
     return (
         <div style={cardStyle}>
-            <img src={item.picture.large} alt="picture"></img>
-            <p>{item.name.title} {item.name.last} {item.name.first}</p>
-            <p>{item.email}</p>
+            <img src={userData.picture.large} alt="picture"></img>
+            <p>{userData.name.title} {userData.name.last} {userData.name.first}</p>
+            <p>{userData.email}</p>
         </div>
     );
 };
 
-export default Card;
+export default UserCard;
