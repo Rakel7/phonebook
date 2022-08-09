@@ -13,22 +13,35 @@ const Button = () => {
         setData(data.results);
     }
 
+    const navStyle = {
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+    }
+
+
     const buttonStyle = {
         width: "100px",
+        margin: "5px",
+        border: "1px solid gray",
+        borderRadius: "10px",
+
     }
 
     const cardsStyle = {
         display: "grid",
         gridTemplateColumns: " repeat(4, 4fr)",
-        gridGap: "10px",
-
-
+        gridGap: "60px",
+        marginLeft:"60px",
     }
+
 
     return (
         <div>
-            <button onClick={fetchUser} style={buttonStyle}>Afficher la liste</button>
-            <SearchBar filterField={(user) => user.name.last} list={data} setList={setData} style={{width:"18%"}}/>
+            <div style={navStyle}>
+                <button onClick={fetchUser} style={buttonStyle}>Afficher la liste</button>
+                <SearchBar filterField={(user) => user.name.last} list={data} setList={setData} style={{ width: "140%", marginLeft:"5px" }} />
+            </div>
             <div style={cardsStyle}>
                 {data.map((userData) => (
                     <UserCard key={userData.name.last} userData={userData} />
