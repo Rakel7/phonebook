@@ -1,26 +1,24 @@
-import React, { useState } from 'react';
-import { useEffect } from 'react';
+import React from 'react';
+import Button from './Button';
+import SearchQuery from './SearchQuery';
 
-const SearchBar = ({ list, setList, filterField = user => user, ...data }) => {
-    const [input, setInput] = useState("");
 
-    useEffect(() => {
-        if (input) {
-            setList(filterList())
-        }
-    }, [input])
+const Searchbar = ({ fetchUser, data, setData }) => {
+    
 
-    const filterList = () => {
-        return list.filter(user => filterField(user).toLowerCase().includes(input.toLocaleLowerCase()))
+    const navStyle = {
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
     }
 
-
     return (
-        <div>
-            <input type="text" placeholder="Tapez le nom de la personne recherché" onChange={(e) => setInput(e.target.value)} {...data}></input>
+        <div style={navStyle}>
+            <Button fetchUser={fetchUser} />
+            <SearchQuery fetchUser={fetchUser} filterField={(user) => user.name.last} list={data} setList={setData} style={{ width: "140%", marginLeft: "5px" }} />
 
         </div>
     );
 };
 
-export default SearchBar;
+export default Searchbar;
