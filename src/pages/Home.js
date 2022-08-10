@@ -6,19 +6,19 @@ import Header from '../components/Header';
 import SearchBar from '../components/SearchBar';
 
 const Home = () => {
-    const [data, setData] = useState([]);
+    const [users, setUser] = useState([]);
 
     const fetchUser = async () => {
         const { data } = await axios.get('https://randomuser.me/api/?results=30');
         console.log('DATA:', data.results);
-        setData(data.results);
+        setUser(data.results);
     }
 
     return (
         <div style={{ backgroundColor: "#e8eef2" }}>
             <Header />
-            <SearchBar fetchUser={fetchUser} data={data} setData={setData} />
-            <CardsList data={data} fetchUser={fetchUser}/>
+            <SearchBar fetchUser={fetchUser} filterFiled={(user) => user.name.last} list={users} setList={setUser} />
+            <CardsList list={users} fetchUser={fetchUser} />
             <Footer />
         </div>
     );

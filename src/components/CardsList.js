@@ -1,7 +1,7 @@
 import React from 'react';
 import UserCard from './UserCard';
 
-const CardsList = ({ data }) => {
+const CardsList = ({ list }) => {
     const cardsStyle = {
         display: "grid",
         gridTemplateColumns: " repeat(4, 4fr)",
@@ -12,8 +12,8 @@ const CardsList = ({ data }) => {
     return (
         <>
             <div style={cardsStyle}>
-                {data.map((userData) => (
-                    <UserCard key={userData.name.last} userData={userData} />
+                {list?.map((userData) => (
+                    <UserCard key={userData.email} userData={userData} />
                 ))}
             </div>
         </>
