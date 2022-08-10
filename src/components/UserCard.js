@@ -9,14 +9,12 @@ const UserCard = ({ userData }) => {
         padding: "5px",
         margin: "5px",
         border: "solid 1px"
-        
 
     }
 
-
     return (
         <div style={cardStyle}>
-            <img src={userData.picture.large} alt="picture" style={{ borderRadius: "50%" }}></img>
+            <img src={userData.picture.large} alt="profilPicture" style={{ borderRadius: "50%" }}></img>
             <p>{userData.name.title} {userData.name.last} {userData.name.first}</p>
             <p>{userData.email}</p>
         </div>
