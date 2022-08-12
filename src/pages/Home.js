@@ -7,6 +7,7 @@ import SearchBar from '../components/SearchBar';
 
 const Home = () => {
     const [users, setUser] = useState([]);
+    const [searchQuery, setSearchQuery] = useState("");
 
     const fetchUser = async () => {
         const { data } = await axios.get('https://randomuser.me/api/?results=30');
@@ -14,11 +15,38 @@ const Home = () => {
         setUser(data.results);
     }
 
+    // filter la liste des users ici
+    // return si searchQuery ? filtré selon la query : liste de base
+    const filterList = (searchQuery) => {
+        
+        if (searchQuery) {
+            searchQuery?.filter(user => user.toLowerCase().includes(searchQuery.toLowerCase()))
+        }
+        else {
+            return users
+        }
+    }
+
     return (
+
         <div style={{ backgroundColor: "#e8eef2" }}>
             <Header />
-            <SearchBar fetchUser={fetchUser} filterFiled={(user) => user.name.last} list={users} setList={setUser} />
-            <CardsList list={users} fetchUser={fetchUser} />
+
+            <SearchBar
+                // ecouter les events venant de l'enfant
+                // searchQuery={event.target.value(input)}
+                // fetchTrigger='event du clique du button'
+
+                setInput={searchQuery => setSearchQuery(searchQuery)}
+
+                // Button axios
+                fetchTrigger={fetchUser}
+            />
+            
+            <CardsList
+                // passer la liste filtré
+                filtredList={filterList()}
+            />
             <Footer />
         </div>
     );
