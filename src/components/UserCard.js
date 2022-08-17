@@ -8,9 +8,12 @@ const UserCard = ({ userData }) => {
         textAlign: 'center',
         padding: "5px",
         margin: "5px",
-        border: "solid 1px"
+        border: "solid 1px",
+        boxShadow: "10px 5px 5px rgba(0, 0, 255, .2)",
 
     }
+
+    
 
     return (
         <div style={cardStyle}>

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { useEffect } from 'react';
 import CardsList from '../components/CardsList';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
@@ -9,23 +10,10 @@ const Home = () => {
     const [users, setUser] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
 
-    const fetchUser = async () => {
-        const { data } = await axios.get('https://randomuser.me/api/?results=30');
-        console.log('DATA:', data.results);
-        setUser(data.results);
-    }
-
-    // filter la liste des users ici
-    // return si searchQuery ? filtré selon la query : liste de base
-    const filterList = (searchQuery) => {
-        
-        if (searchQuery) {
-            searchQuery?.filter(user => user.toLowerCase().includes(searchQuery.toLowerCase()))
-        }
-        else {
-            return users
-        }
-    }
+    useEffect(() => {
+        axios.get('https://randomuser.me/api/?results=30')
+        .then((res) => setUser(res.data))
+    }, []);
 
     return (
 
@@ -33,19 +21,11 @@ const Home = () => {
             <Header />
 
             <SearchBar
-                // ecouter les events venant de l'enfant
-                // searchQuery={event.target.value(input)}
-                // fetchTrigger='event du clique du button'
-
                 setInput={searchQuery => setSearchQuery(searchQuery)}
-
-                // Button axios
-                fetchTrigger={fetchUser}
             />
             
             <CardsList
-                // passer la liste filtré
-                filtredList={filterList()}
+                filtredList={users}
             />
             <Footer />
         </div>

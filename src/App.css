@@ -1,0 +1,65 @@
+/* ============================================================================= */
+/* Cards List */
+/* ============================================================================= */
+
+#cards{
+    display: grid;
+    grid-template-columns:  repeat(4, 4fr);
+    grid-gap:  60px;
+    margin-left: 60px;
+  }  
+
+
+  @media only screen and (max-width: 1439px) {
+    #cards{
+      display: grid;
+      grid-template-columns:  repeat(3, 3fr);
+      grid-gap:  60px;
+      margin-left: 60px;
+    }  
+}
+
+@media only screen and (max-width: 1023px) {
+      #cards{
+        display: grid;
+        grid-template-columns:  repeat(2, 2fr);
+        grid-gap:  60px;
+        margin-left: 60px;
+      }  
+}
+
+@media only screen and (max-width: 426px) {
+    #cards{
+      display: grid;
+      grid-template-columns:  repeat(1, 1fr);
+      grid-gap:  60px;
+      margin-left: 60px;
+    }  
+}
+
+/* ============================================================================= */
+/* Formulaire de Contact */
+/* ============================================================================= */
+
+#containerForm {
+    margin: 5% 5% 5% 32%;
+    align-items: center;
+    max-width: 30%;
+    position: relative;
+    padding: 3%;
+    border: solid 1px;
+    border-radius: 10px
+}
+
+
+@media only screen and (max-width: 426px) {
+    #containerForm{
+        margin: 5% 5% 5% 20%;
+        align-items : center;
+        max-width: 60%;
+        position: relative;
+        padding: 3%;
+        border: solid 1px;
+        border-radius: 10px
+    }  
+}

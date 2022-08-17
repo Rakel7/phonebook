@@ -1,7 +1,6 @@
 import React from 'react';
 
-
-const Searchbar = ({ fetchTrigger, setInput }) => {
+const Searchbar = ({ setInput }) => {
 
     const navStyle = {
         display: "flex",
@@ -18,7 +17,6 @@ const Searchbar = ({ fetchTrigger, setInput }) => {
 
     return (
         <div style={navStyle}>
-            <button onClick={() => fetchTrigger()} style={buttonStyle}>Afficher la liste</button>
 
             <input type="text" placeholder="Tapez le nom de la personne recherché" id="searchBar" onChange={(e) => setInput(e.target.value)} ></input>
 
