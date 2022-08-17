@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
-
-const Searchbar = ({ fetchUser, list, setList, filterFiled = user => user, ...props }) => {
+const Searchbar = ({ setInput }) => {
 
     const navStyle = {
         display: "flex",
@@ -16,28 +15,12 @@ const Searchbar = ({ fetchUser, list, setList, filterFiled = user => user, ...pr
 
     }
 
-    const [searchQuery, setSearchQuery] = useState("");
-
-    useEffect(() => {
-        if (searchQuery !== "") {
-            setList(filterList())
-        }
-        else {
-            fetchUser()
-            console.log("List :", list)
-        }
-    }, [searchQuery])
-
-    const filterList = () => {
-        return list.filter(user => filterFiled(user).toLowerCase().includes(searchQuery.toLocaleLowerCase()))
-    }
-
     return (
         <div style={navStyle}>
-            <button onClick={(e) => fetchUser(e.target.value)} style={buttonStyle}>Afficher la liste</button>
-            <input type="text" placeholder="Tapez le nom de la personne recherché" onChange={(e) => setSearchQuery(e.target.value)} value={searchQuery} {...props}></input>
-        </div>
 
+            <input type="text" placeholder="Tapez le nom de la personne recherché" id="searchBar" onChange={(e) => setInput(e.target.value)} ></input>
+
+        </div>
     );
 };
 

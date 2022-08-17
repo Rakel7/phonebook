@@ -41,28 +41,17 @@ const Contact = () => {
             );
     };
 
-    const containerForm = {
-        margin: "5% 5% 5% 32%",
-        itemAlign: "center",
-        maxWidth: "30%",
-        position: "relative",
-        padding: "3%",
-        border: "solid 1px",
-        borderRadius: "10px"
-    }
-
-
     return (
         <div>
             <Header />
             <div>
                 <h2 style={{textAlign:"center"}}>Formulaire pour contacter notre service client</h2>
-                <div style={containerForm}>
+                <div  id="containerForm">
                     <h2 style={{marginBottom:"40px"}}>Contactez-nous</h2>
                     <form ref={form} onSubmit={sendEmail} style={{ display: "grid" }}>
                         <label>Nom</label>
                         <input type="text" name="name" required autoComplete="off" id="name" />
-                        <label>Email</label>
+                        <label style={{marginTop:"10px"}}>Email</label>
                         <input
                             type="email"
                             name="email"
@@ -70,9 +59,9 @@ const Contact = () => {
                             autoComplete="off"
                             id="email"
                         />
-                        <label>Message</label>
-                        <textarea name="message" id="mess" />
-                        <input type="submit" value="Envoyer" className="hover button" />
+                        <label style={{marginTop:"10px"}}>Message</label>
+                        <textarea name="message" id="mess" style={{height: "100px"}}/>
+                        <input type="submit" value="Envoyer" className="hover button" style={{marginTop:"10px"}}/>
                     </form>
                     <div className="formMessage"></div>
                 </div>
